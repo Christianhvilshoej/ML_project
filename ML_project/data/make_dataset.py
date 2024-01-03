@@ -19,6 +19,10 @@ if __name__ == "__main__":
 
     test_data = torch.load(os.path.join(raw_data_dir, "test_images.pt"))
     test_labels = torch.load(os.path.join(raw_data_dir, "test_target.pt"))
+    
+    #Add channel dimension (grayscale = 1)
+    train_data = train_data.unsqueeze(1)
+    test_data = test_data.unsqueeze(1)
 
     # Normalize the data
     train_mean = train_data.mean(dim=(0, 2, 3))  # Calculate mean per batch along 28x28 dimensions
@@ -35,4 +39,16 @@ if __name__ == "__main__":
     print(test_data.shape)
     print(test_labels.shape)
 
-    print(train_std.shape)
+    print(f"Mean of training data: {torch.round(train_data.mean(), decimals=3).item()}"
+      f" and test data {torch.round(test_data.mean(), decimals=3).item()}")
+    print(f"Standard deviation of training data: {torch.round(train_data.std(), decimals=3).item()}"
+      f" and test data {torch.round(test_data.std(), decimals=3).item()}")
+    
+    #Save processed data in the folder
+    #Get folder of processed data
+    processed_data_dir = os.path.join(current_dir[:-16], "data/processed/")
+    #Save training to train_data.pt
+    torch.save(train_data, os.path.join(processed_data_dir,"train_data.pt"))
+    #Save test data to test_data.pt
+    torch.save(test_data, os.path.join(processed_data_dir,"test_data.pt"))
+    
