@@ -1,0 +1,6 @@
+outs:
+- md5: 50d231ab94e121b8b6871f4bd781d9a5.dir
+  size: 112732481
+  nfiles: 16
+  hash: md5
+  path: corruptmnist
