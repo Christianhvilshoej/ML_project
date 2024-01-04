@@ -12,3 +12,8 @@ COPY data/ data/
 
 WORKDIR /
 RUN pip install . --no-cache-dir #(1)
+
+
+
+
+ENTRYPOINT ["python","-u","ML_project/models/train.py" ]
