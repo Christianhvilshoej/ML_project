@@ -18,4 +18,4 @@ WORKDIR /
 RUN pip install . --no-cache-dir #(1)
 
 #Make entrypoint
-ENTRYPOINT ["python","-u","ML_project/train.py" ]
+ENTRYPOINT ["python","-u","ML_project/train_model.py" ]
