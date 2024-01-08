@@ -25,4 +25,9 @@ class MyNeuralNet(torch.nn.Module):
             Output tensor with shape [N,out_features]
 
         """
+        # Add test assertions
+
+        if x.ndim != 4:
+            raise ValueError("Expected 4D a tensor")
+
         return self.l2(self.r(self.l1(x)))
